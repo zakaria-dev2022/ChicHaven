@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Expert;
 use Illuminate\Http\Request;
 
 class ExpertController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $experts = Expert::all();
+        return view('dashboard.experts.index', compact('experts'));
     }
 
     /**
@@ -19,7 +21,7 @@ class ExpertController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.experts.create');
     }
 
     /**
@@ -27,7 +29,8 @@ class ExpertController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Expert::create($request->all());
+        return redirect()->route('experts.index');
     }
 
     /**
@@ -35,7 +38,8 @@ class ExpertController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $expert = Expert::find($id);
+        return view('dashboard.experts.show', compact('expert'));
     }
 
     /**
@@ -43,7 +47,8 @@ class ExpertController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $expert = Expert::find($id);
+        return view('dashboard.experts.edit', compact('expert'));
     }
 
     /**
@@ -51,7 +56,9 @@ class ExpertController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $expert = Expert::find($id);
+        $expert->update($request->all());
+        return redirect()->route('experts.index');
     }
 
     /**
@@ -59,6 +66,8 @@ class ExpertController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $expert = Expert::find($id);
+        $expert->delete();
+        return redirect()->route('experts.index');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -11,7 +12,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $appointments = Appointment::all();
+        return view('dashboard.appointments.index', compact('appointments'));
     }
 
     /**
@@ -19,7 +21,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.appointments.create');
     }
 
     /**
@@ -27,7 +29,8 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Appointment::create($request->all());
+        return redirect()->route('appointments.index');
     }
 
     /**
@@ -35,7 +38,8 @@ class AppointmentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $appointment = Appointment::find($id);
+        return view('dashboard.appointments.show', compact('appointment'));
     }
 
     /**
@@ -43,7 +47,8 @@ class AppointmentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $appointment = Appointment::find($id);
+        return view('dashboard.appointments.edit', compact('appointment'));
     }
 
     /**
@@ -51,7 +56,9 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $appointment = Appointment::find($id);
+        $appointment->update($request->all());
+        return redirect()->route('appointments.index');
     }
 
     /**
@@ -59,6 +66,8 @@ class AppointmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $appointment = Appointment::find($id);
+        $appointment->delete();
+        return redirect()->route('appointments.index');
     }
 }

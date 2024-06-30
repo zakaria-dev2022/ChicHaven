@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ExpertController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +24,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 });
+
+Route::resource('experts', ExpertController::class);
+Route::resource('clients', ClientController::class);
+Route::resource('articles', ArticleController::class);
+Route::resource('orders', OrderController::class);
+Route::resource('appointments', AppointmentController::class);
