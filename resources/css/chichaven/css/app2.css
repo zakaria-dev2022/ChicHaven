@@ -1,0 +1,12 @@
+.header__widget a {
+    background-color:#CF5700 !important;
+    color: #fff !important;
+}
+.header{
+    background-color: #eda9658c;
+    position: fixed;
+    padding-bottom: 20px;
+}
+.header__menu ul li a:after{
+    background: #CF5700;
+}

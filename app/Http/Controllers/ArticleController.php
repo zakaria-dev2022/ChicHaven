@@ -29,8 +29,33 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        Article::create($request->all());
-        return redirect()->route('articles.index');
+        // Article::create($request->all());
+        // return redirect()->route('articles.index');
+
+          // Validation des données du formulaire
+    $request->validate([
+        'genre' => 'required|string|max:255',
+        'price' => 'required|numeric',
+        'description' => 'required|string',
+        'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    // Déplacement et enregistrement de l'image
+    $dossier = 'img_article';
+    $nom_photo = time() . '_' . $request->photo->getClientOriginalName(); // Nom unique pour éviter les conflits
+
+    $request->photo->move(public_path($dossier), $nom_photo);
+
+    // Création de l'article avec les données du formulaire et le chemin de l'image
+    $article = new Article();
+    $article->genre = $request->genre;
+    $article->price = $request->price;
+    $article->description = $request->description;
+    $article->photo = $dossier . '/' . $nom_photo; // Chemin relatif de l'image
+    $article->save();
+
+    // Redirection vers la liste des articles (index)
+    return redirect()->route('articles.index');
     }
 
     /**
@@ -56,8 +81,13 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $article = Article::find($id);
-        $article->update($request->all());
+        $article=Article::find($id);
+        $dossier='img_article';
+        $nom_photo=time().'article'.'.'.$request->photo->extension();
+        $request->photo->move(public_path($dossier),$nom_photo);
+        $data=$request->all();
+        $data['photo']=$dossier.'/'.$nom_photo;
+        $article->update($data);
         return redirect()->route('articles.index');
     }
 

@@ -29,8 +29,13 @@ class ExpertController extends Controller
      */
     public function store(Request $request)
     {
-        Expert::create($request->all());
-        return redirect()->route('experts.index');
+    $dossier ='img_expert';
+    $nom_photo = time() . 'expert.' . $request->photo->extension();
+    $request->photo->move(public_path($dossier), $nom_photo);
+    $data=$request->all();
+    $data['photo']=$dossier.'/'.$nom_photo;
+    Expert::create($data);
+    return redirect()->route('experts.index');
     }
 
     /**
@@ -56,8 +61,13 @@ class ExpertController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $expert = Expert::find($id);
-        $expert->update($request->all());
+        $expert=Expert::find($id);
+        $dossier='img_expert';
+        $nom_photo=time().'expert'.'.'.$request->photo->extension();
+        $request->photo->move(public_path($dossier),$nom_photo);
+        $data=$request->all();
+        $data['photo']=$dossier.'/'.$nom_photo;
+        $expert->update($data);
         return redirect()->route('experts.index');
     }
 

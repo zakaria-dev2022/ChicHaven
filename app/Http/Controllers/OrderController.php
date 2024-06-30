@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Client;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,11 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('dashboard.orders.create');
+        
+        $clients = Client::all();
+        $articles = Article::all();
+        return view('dashboard.orders.create', compact('clients', 'articles'));
+        // return view('dashboard.orders.create');
     }
 
     /**
@@ -38,6 +44,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
+        
         $order = Order::find($id);
         return view('dashboard.orders.show', compact('order'));
     }
@@ -48,7 +55,11 @@ class OrderController extends Controller
     public function edit(string $id)
     {
         $order = Order::find($id);
-        return view('dashboard.orders.edit', compact('order'));
+        $clients = Client::all();
+        $articles = Article::all();
+        return view('dashboard.orders.edit', compact('order', 'clients', 'articles'));
+        // $order = Order::find($id);
+        // return view('dashboard.orders.edit', compact('order'));
     }
 
     /**

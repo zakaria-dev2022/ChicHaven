@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ['price', 'Quantity'];
+    protected $fillable = ['price', 'Quantity','client_id','article_id'];
 
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
 
-    public function articles()
+    public function article()
     {
-        return $this->hasMany(Article::class);
+        return $this->belongsTo(Article::class);
     }
 }

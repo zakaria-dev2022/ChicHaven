@@ -16,16 +16,30 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="../resources/css/chichaven/css/bootstrap.min.css" type="text/css">
+   
     <link rel="stylesheet" href="../resources/css/chichaven/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="../resources/css/chichaven/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="../resources/css/chichaven/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../resources/css/chichaven/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../resources/css/chichaven/css/slick.css" type="text/css">
     <link rel="stylesheet" href="../resources/css/chichaven/css/style.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/chichaven/css/app.css" >
+    <link rel="stylesheet" href="../resources/css/chichaven/css/app2.css" >
     <!-- <link rel="stylesheet" href="css2/bootstrap.min.css" > -->
     <link rel="stylesheet" href="../resources/css/chichaven/css2/style.css">
     <link rel="stylesheet" href="../resources/css/chichaven/css2/tiny-slider.css">
+
+    <style>
+        .fs3{
+            font-size: 1.5rem;
+            color: rgb(0, 0, 0)
+        }
+        .fs1{
+            font-size: 2.5rem;
+        }
+        .textdanger{
+            color: #CF5700;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,8 +68,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="#"><img src="../resources/img/img/logo.png" alt=""></a>
+                    <div class="header__loo pt-0 mt-0">
+                        {{-- <a href="#"><img src="../resources/img/img/ChicHaven.jpg" alt="" width="200px" height="70px"></a> --}}
+                        <span class="ms-1 fs3 font-weight-bold"><span class="fs1 textdanger">C</span>HIC<span class="fs1 textdanger">H</span>AVEN</span><span class="fs1 textdanger">.</span>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -78,11 +93,11 @@
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__widget">
+                    <div class="header__widget textdanger">
                         <!-- <span>Call us for any questions</span> -->
                         <!-- <h4>+01 123 456 789</h4> -->
                         <!-- <a class="btn btn-warnning"></button> -->
-                            <a href="" class="btn mx-4">call expert</a>
+                            <a href="" class="btn mx-4 textdanger">call expert</a>
                     </div>
                 </div>
             </div>

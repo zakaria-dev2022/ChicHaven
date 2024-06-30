@@ -1,3 +1,3 @@
 @section('title_principale')
-Client 
+    Appointment
 @endsection
