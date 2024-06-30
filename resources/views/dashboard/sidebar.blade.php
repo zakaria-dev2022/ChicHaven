@@ -53,7 +53,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link  active" href="{{url('dashboard')}}">
+          <a class="nav-link  {{ request()->is('dashboard') ? 'active' : '' }}" href="{{url('dashboard')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -73,7 +73,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{url('experts')}}">
+          <a class="nav-link {{ request()->is('experts') ? 'active' : '' }} " href="{{url('experts')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -93,7 +93,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{url('orders')}}">
+          <a class="nav-link {{ request()->is('orders') ? 'active' : '' }} " href="{{url('orders')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>credit-card</title>
@@ -113,7 +113,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{url('articles')}}">
+          <a class="nav-link {{ request()->is('articles') ? 'active' : '' }} " href="{{url('articles')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>box-3d-50</title>
@@ -134,7 +134,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{url('clients')}}">
+          <a class="nav-link {{ request()->is('clients') ? 'active' : '' }} " href="{{url('clients')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>customer-support</title>
@@ -155,7 +155,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{url('appointments')}}">
+          <a class="nav-link  {{ request()->is('appointments') ? 'active' : '' }}" href="{{url('appointments')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>settings</title>
@@ -175,7 +175,7 @@
             <span class="nav-link-text ms-1">Appointment</span>
           </a>
         </li>
-        <li class="nav-item mt-3">
+        {{-- <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
@@ -240,7 +240,7 @@
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
-        </li>
+        </li> --}}
       </ul>
     </div>
     <!-- <div class="sidenav-footer mx-3 ">

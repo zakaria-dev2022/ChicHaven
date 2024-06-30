@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Client;
+use App\Models\Expert;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -21,7 +23,10 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('dashboard.appointments.create');
+        $clients=Client::all();
+        $experts=Expert::all();
+        return view('dashboard.appointments.create', compact('clients','experts'));
+        // return view('dashboard.appointments.create');
     }
 
     /**
@@ -48,7 +53,10 @@ class AppointmentController extends Controller
     public function edit(string $id)
     {
         $appointment = Appointment::find($id);
-        return view('dashboard.appointments.edit', compact('appointment'));
+        $clients=Client::all();
+        $experts=Expert::all();
+        return view('dashboard.appointments.edit', compact('appointment','clients','experts'));
+        // return view('dashboard.appointments.edit', compact('appointment'));
     }
 
     /**
