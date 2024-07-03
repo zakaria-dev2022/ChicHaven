@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ChichavenController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ExpertController;
 use App\Http\Controllers\OrderController;
@@ -24,7 +25,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 });
-
+// Route::get('/call_expert', function () {
+//     return view('dashboard.dashboard');
+// });
+Route::get('/call_expert',[ChichavenController::class,'create'])->name('call_expert.create');
+Route::post('/reserver_expert',[ChichavenController::class,'store'])->name('reserver_expert.store');
 Route::resource('experts', ExpertController::class);
 Route::resource('clients', ClientController::class);
 Route::resource('articles', ArticleController::class);

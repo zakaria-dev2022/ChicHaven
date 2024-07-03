@@ -43,6 +43,7 @@
 </head>
 
 <body>
+   
     <!-- Page Preloder -->
     {{-- <div id="preloder">
         <div class="loader"></div>
@@ -76,17 +77,17 @@
                 <div class="col-lg-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./projects.html">Projects</a></li>
-                            <li><a href="./about.html">About</a></li>
-                            <li><a href="#">Pages</a>
+                            <li class="active"><a href="">Home</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#about">About</a></li>
+                            {{-- <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./Project-details.html">Project Details</a></li>
                                     <li><a href="./about.html">About</a></li>
                                     <li><a href="./services.html">Services</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
@@ -97,12 +98,23 @@
                         <!-- <span>Call us for any questions</span> -->
                         <!-- <h4>+01 123 456 789</h4> -->
                         <!-- <a class="btn btn-warnning"></button> -->
-                            <a href="" class="btn mx-4 textdanger">call expert</a>
+                            <a href="{{route('call_expert.create')}}" class="btn mx-4 textdanger">call expert</a>
                     </div>
                 </div>
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
+        @if (session('success'))
+        <div class="alert alert-success mt-2">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     </header>
     <!-- Header Section End -->
 
